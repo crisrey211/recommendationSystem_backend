@@ -5,17 +5,20 @@ const recommendationSchema = new mongoose.Schema({
     Título: { type: String, required: true },
 })
 
-const bookSchema = new mongoose.Schema({
-    ISBN: {
-        type: String,
-        required: true,
-        unique: true,
+const bookSchema = new mongoose.Schema(
+    {
+        ISBN: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        Título: {
+            type: String,
+            required: true,
+        },
+        Recomendaciones: [recommendationSchema],
     },
-    Título: {
-        type: String,
-        required: true,
-    },
-    recommendation: [recommendationSchema],
-})
+    { collection: 'content2content' }
+)
 
 export default mongoose.model('Book', bookSchema)
