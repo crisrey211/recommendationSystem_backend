@@ -15,12 +15,15 @@ const recommendationSchema = new mongoose.Schema({
     },
 })
 
-const userSchema = new mongoose.Schema({
-    ID_usuario: {
-        type: String,
-        required: true,
+const userSchema = new mongoose.Schema(
+    {
+        ID_usuario: {
+            type: Number,
+            required: true,
+        },
+        Recomendaciones: [recommendationSchema],
     },
-    Recomendaciones: [recommendationSchema],
-})
+    { collection: 'content2user' }
+)
 
 export default mongoose.model('User', userSchema)

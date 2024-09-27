@@ -18,7 +18,7 @@ const bookSchema = new mongoose.Schema(
         },
         Recomendaciones: [recommendationSchema],
     },
-    { collection: 'content2content' }
+    { collection: 'content2user' }
 )
 
 export default mongoose.model('Book', bookSchema)

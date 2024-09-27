@@ -28,10 +28,10 @@ export const getAllLibros = async (req, res) => {
 }
 
 ///Recomendación colaborativo basado en usuarios
-export const getAllUsers = async (req, res) => {
-    const { id } = req.params
-    const userFound = await User.findOne({ ID_usuario: id })
-
+export const getBookByUser = async (req, res) => {
+    const { userId } = req.params
+    const userFound = await User.findOne({ ID_usuario: userId })
+    console.log(userFound)
     if (!userFound) return res.status(400).json({ message: 'User not found' })
 
     res.json(userFound)
@@ -42,9 +42,10 @@ export const getAllUsers = async (req, res) => {
     }
 }
 
-export const getBookByUser = async (req, res) => {
+export const getAllUsers = async (req, res) => {
     try {
         const users = await User.find().lean()
+        console.log(users)
         res.json(users)
     } catch (error) {
         return res.status(500).json({ message: error.message })
