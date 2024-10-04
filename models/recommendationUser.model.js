@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { COLLECTION_BASED_USERS_NAME } from '../config.js'
 
 const recommendationSchema = new mongoose.Schema({
     ISBN: {
@@ -23,7 +24,7 @@ const userSchema = new mongoose.Schema(
         },
         Recomendaciones: [recommendationSchema],
     },
-    { collection: 'content2user' }
+    { collection: COLLECTION_BASED_USERS_NAME }
 )
 
 export default mongoose.model('User', userSchema)

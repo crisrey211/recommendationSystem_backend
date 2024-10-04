@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { COLLECTION_BASED_ITEMS_NAME } from '../config.js'
 
 const recommendationSchema = new mongoose.Schema({
     ISBN: {
@@ -28,7 +29,7 @@ const itemSchema = new mongoose.Schema(
         },
         Recomendaciones: [recommendationSchema],
     },
-    { collection: 'content2item' }
+    { collection: COLLECTION_BASED_ITEMS_NAME }
 )
 
 export default mongoose.model('Item', itemSchema)
